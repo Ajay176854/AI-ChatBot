@@ -333,14 +333,190 @@
 @keyframes spin      { to { transform: rotate(360deg); } }
 @keyframes glowPulse { 0%, 100% { box-shadow: 0 0 20px rgba(108,99,255,0.3); } 50% { box-shadow: 0 0 40px rgba(108,99,255,0.6), 0 0 60px rgba(108,99,255,0.2); } }
 
-/* ── Responsive ── */
+/* ═══════════════════════════════════════════════
+   ── RESPONSIVE — TABLET (≤ 768px) ──
+═══════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .page { padding: 12px; }
+
+  .wrapper {
+    height: min(96vh, 900px);
+    max-width: 100%;
+    border-radius: 20px;
+  }
+
+  /* Header */
+  .header { padding: 14px 16px; }
+  .avatar { width: 40px; height: 40px; font-size: 18px; }
+  .botName { font-size: 14px; }
+  .botStatus { font-size: 10px; }
+  .headerLeft { gap: 10px; }
+  .servicePill { width: 28px; height: 28px; font-size: 12px; }
+
+  /* Messages */
+  .messages { padding: 12px 14px 8px; gap: 10px; }
+  .bubble { max-width: 85%; font-size: 13.5px; padding: 11px 14px; }
+  .msgAvatar { width: 28px; height: 28px; font-size: 12px; }
+
+  /* Service grid → 2 cols on tablet */
+  .serviceGrid { grid-template-columns: 1fr 1fr; gap: 8px; padding: 4px 0 4px 38px; }
+  .serviceLabel { font-size: 12px; }
+
+  /* Employee cards */
+  .employeeGrid { gap: 6px; padding: 4px 0 4px 38px; }
+  .employeeCard { flex: 1 1 90px; min-width: 85px; padding: 12px 8px 10px; }
+  .employeeCount { font-size: 12px; }
+  .employeeDesc  { font-size: 9px; }
+
+  /* Budget cards */
+  .budgetGrid { gap: 10px; }
+  .budgetCard { flex: 1 1 180px; padding: 18px 14px 16px; }
+  .budgetPrice { font-size: 22px; }
+  .budgetTier  { font-size: 15px; }
+
+  /* Input */
+  .inputArea { padding: 12px 14px 16px; gap: 8px; }
+  .input { font-size: 13px; padding: 11px 14px; }
+  .sendBtn { width: 42px; height: 42px; font-size: 15px; }
+
+  /* Actions */
+  .finalActionsGrid { gap: 10px; padding: 10px 0 4px; }
+  .actionBtnOutline,
+  .actionBtnSolid { padding: 10px 20px; font-size: 12px; }
+}
+
+/* ═══════════════════════════════════════════════
+   ── RESPONSIVE — MOBILE (≤ 540px) ──
+═══════════════════════════════════════════════ */
 @media (max-width: 540px) {
   .page { padding: 0; }
-  .wrapper { height: 100vh; border-radius: 0; max-width: 100%; border: none; }
-  .serviceGrid { grid-template-columns: 1fr; }
-  .bubble { max-width: 90%; }
-  .budgetGrid { flex-direction: column; }
-  .budgetCard { flex: 0 0 auto; max-width: 100%; }
-  .employeeGrid { gap: 6px; }
-  .employeeCard { flex: 1 1 80px; min-width: 80px; }
+
+  .wrapper {
+    height: 100dvh;   /* dynamic viewport height — avoids browser chrome overlap */
+    height: 100vh;
+    border-radius: 0;
+    max-width: 100%;
+    border: none;
+    box-shadow: none;
+  }
+
+  /* Orbs — smaller on mobile */
+  .orb1 { width: 280px; height: 280px; top: -80px; left: -80px; }
+  .orb2 { width: 220px; height: 220px; bottom: -60px; right: -60px; }
+  .orb3 { display: none; }
+
+  /* Header */
+  .header { padding: 12px 14px; }
+  .avatar { width: 38px; height: 38px; font-size: 16px; }
+  .botName { font-size: 13px; }
+  .botStatus { font-size: 10px; }
+  .headerServices { gap: 4px; }
+  .servicePill { width: 26px; height: 26px; font-size: 11px; border-radius: 6px; }
+
+  /* Progress */
+  .progressLabel { font-size: 9px; padding: 3px 12px 2px; }
+
+  /* Messages */
+  .messages { padding: 10px 12px 6px; gap: 8px; }
+  .bubble { max-width: 90%; font-size: 13px; padding: 10px 13px; }
+  .msgAvatar { width: 26px; height: 26px; font-size: 11px; }
+  .msgRow { gap: 7px; }
+
+  /* Purpose & Service → 1 col on mobile */
+  .serviceGrid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 4px 0 4px 33px;
+  }
+  .serviceCard { padding: 12px 12px; border-radius: 12px; }
+  .serviceIcon  { font-size: 18px; }
+  .serviceLabel { font-size: 12px; }
+
+  /* Employee cards → scroll row */
+  .employeeGrid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 4px 0 8px 33px;
+    gap: 6px;
+    scrollbar-width: none;
+  }
+  .employeeGrid::-webkit-scrollbar { display: none; }
+  .employeeCard {
+    flex: 0 0 88px;
+    min-width: 88px;
+    padding: 10px 6px 8px;
+    border-radius: 12px;
+  }
+  .employeeIcon  { font-size: 18px; }
+  .employeeCount { font-size: 11px; }
+  .employeeDesc  { font-size: 9px; }
+
+  /* Budget cards → stacked full width */
+  .budgetGrid { flex-direction: column; gap: 10px; }
+  .budgetCard {
+    flex: 0 0 auto;
+    max-width: 100%;
+    padding: 16px 14px 14px;
+    border-radius: 16px;
+  }
+  .budgetPrice { font-size: 20px; }
+  .budgetTier  { font-size: 14px; }
+  .budgetPriceSub { font-size: 9px; }
+  .budgetFeatureItem { font-size: 11px; }
+  .budgetSelectBtn { font-size: 11px; padding: 8px 12px; margin-top: 10px; }
+
+  /* Upload */
+  .uploadArea { padding: 4px 0 4px 33px; }
+  .uploadCard { padding: 18px 16px; border-radius: 12px; }
+  .uploadIcon  { font-size: 22px; }
+  .uploadTitle { font-size: 13px; }
+  .uploadDesc  { font-size: 10px; }
+
+  /* Input area */
+  .inputArea { padding: 10px 12px 14px; gap: 8px; }
+  .input {
+    font-size: 16px; /* 16px prevents iOS auto-zoom on focus */
+    padding: 11px 13px;
+    border-radius: 10px;
+  }
+  .sendBtn { width: 42px; height: 42px; font-size: 15px; border-radius: 10px; }
+
+  /* Final actions */
+  .finalActionsGrid {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 8px 16px 4px;
+  }
+  .actionBtnOutline,
+  .actionBtnSolid {
+    text-align: center;
+    padding: 12px 16px;
+    font-size: 13px;
+    border-radius: 20px;
+  }
+
+  /* Submitting banner */
+  .submittingBanner { font-size: 11px; padding: 6px; }
 }
+
+/* ═══════════════════════════════════════════════
+   ── RESPONSIVE — SMALL PHONES (≤ 380px) ──
+═══════════════════════════════════════════════ */
+@media (max-width: 380px) {
+  .header { padding: 10px 12px; }
+  .botName { font-size: 12px; }
+  .avatar { width: 34px; height: 34px; font-size: 14px; }
+  .servicePill { display: none; } /* Hide service pills on tiny screens */
+
+  .bubble { font-size: 12.5px; padding: 9px 12px; }
+  .messages { padding: 8px 10px 6px; }
+
+  .employeeCard { flex: 0 0 76px; min-width: 76px; }
+
+  .budgetPrice { font-size: 18px; }
+  .input { font-size: 16px; padding: 10px 12px; }
+  .sendBtn { width: 38px; height: 38px; }
+}
+

@@ -5,6 +5,14 @@ export const metadata = {
   description: 'Chat with our AI assistant to get a personalized proposal for AI Chatbot Development, Web Development, AI Product Development, or AI Digital Marketing.',
 };
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+};
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
